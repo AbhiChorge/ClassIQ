@@ -28,86 +28,127 @@
 
   /* SIGNUP */
   const signup = document.querySelector("#signupForm");
+
   if (signup) {
-
     signup.addEventListener("submit", e => {
-        // Prevent normal page reload
-        e.preventDefault();
+      e.preventDefault();
 
-        /* Get form values */
-        const name = document.querySelector("#signupName").value.trim();
-        const email = document.querySelector("#signupEmail").value.trim();
-        const pass = document.querySelector("#signupPassword").value;
-        let ok = true;
+      /* Get form values */
+      const name = document.querySelector("#signupName").value.trim();
+      const email = document.querySelector("#signupEmail").value.trim();
+      const pass = document.querySelector("#signupPassword").value;
 
-        /* Validate name */
-        ok = error( "signupName", name.length < 2 ? "Enter your full name." : "" ) && ok;
+      /* Remove previous invalid classes */
+      document.querySelector("#signupName").classList.remove("invalid");
+      document.querySelector("#signupEmail").classList.remove("invalid");
+      document.querySelector("#signupPassword").classList.remove("invalid");
 
-        /* Validate email */
-        ok = error( "signupEmail", !validEmail(email) ? "Enter a valid email address." : "" ) && ok;
+      /* Validate name */
+      if (name.length < 2) {
+        error( "signupName", "Enter your full name." );
+        showNotification( "Please enter your full name.", "error" );
 
-        /* Validate password */
-        ok = error( "signupPassword", !passwordOK(pass) ? "Use 8+ characters with a letter and number." : "" ) && ok;
-
-        const message = document.querySelector("#signupMessage");
-        /* If any validation failed */
-        if (!ok) {
-          message.textContent = "Please fix the highlighted fields.";
-          message.className = "form-message error-message";
-          return;
-        }
-
-        /* Redirect user to login page */
-        setTimeout(() => { location.href = "login.html"; }, 700);
+        document.querySelector("#signupName").focus();
+        return;
       }
-    );
+
+      /* Validate email */
+      if (!validEmail(email)) {
+        error( "signupEmail", "Enter a valid email address." );
+        showNotification( "Please enter a valid email address.", "error" );
+
+        document.querySelector("#signupEmail").focus();
+        return;
+      }
+
+      /* Validate password */
+      if (!passwordOK(pass)) {
+        error( "signupPassword", "Use 8+ characters with a letter and number." );
+        showNotification( "Use 8+ characters with a letter and number.", "error" );
+
+        document.querySelector("#signupPassword").focus();
+        return;
+      }
+
+      /* Save registered user */
+      const user = {
+        name: name,
+        email: email,
+        password: pass
+      };
+
+      localStorage.setItem( "classiqUser", JSON.stringify(user) );
+
+      /* Show success notification */
+      showNotification( "Signup successful! Redirecting to login...", "success" );
+
+      /* Redirect to login page */
+      setTimeout(() => {
+        location.href = "login.html";
+      }, 700);
+    });
   }
 
 
   /* LOGIN */
 
   const login = document.querySelector("#loginForm");
-  if (login) {
 
+  if (login) {
     login.addEventListener("submit", e => {
       e.preventDefault();
 
+      /* Get form values */
       const email = document.querySelector("#loginEmail").value.trim();
       const pass = document.querySelector("#loginPassword").value;
-      let ok = true;
 
-      /* Email validation */
-      ok = error("loginEmail", !validEmail(email) ? "Enter a valid email address." : "") && ok;
+      /* Remove previous invalid classes */
+      document.querySelector("#loginEmail").classList.remove("invalid");
+      document.querySelector("#loginPassword").classList.remove("invalid");
 
-      /* Password validation */
-      ok = error("loginPassword", pass.length < 8 ? "Password must be at least 8 characters." : "") && ok;
+      /* Validate email */
+      if (!validEmail(email)) {
+        error( "loginEmail", "Enter a valid email address." );
+        showNotification( "Please enter a valid email address.", "error");
 
-      const message = document.querySelector("#loginMessage");
-
-
-      /* Stop if validation fails. */
-      if (!ok) {
-        message.textContent = "Please fix the highlighted fields.";
-        message.className = "form-message error-message";
+        document.querySelector("#loginEmail").focus();
         return;
       }
 
-      /* Retrieve registered user. */
-      const user = JSON.parse(localStorage.getItem("classiqUser") || "null");
+      /* Validate password */
+      if (pass.length < 8) {
+        error( "loginPassword", "Password must be at least 8 characters." );
+        showNotification( "Password must be at least 8 characters.", "error" );
 
-      if (user && (user.email.toLowerCase() !== email.toLowerCase() || user.password !== pass)) {
-        message.textContent = "Email or password is incorrect.";
-        message.className = "form-message error-message";
+        document.querySelector("#loginPassword").focus();
         return;
       }
 
-      /* Login successful. */
-      localStorage.setItem("classiqLoggedIn", "true");
+      /* Retrieve registered user */
+      const user = JSON.parse( localStorage.getItem("classiqUser") || "null" );
 
-      message.textContent = "Login successful. Redirecting…";
-      message.className = "form-message success";
+      /* Check if user exists */
+      if (!user) {
+        showNotification( "No account found. Please sign up first.", "error" );
+        return;
+      }
 
-      setTimeout(() => { location.href = "index.html"; }, 600);
+      /* Check email and password */
+      if ( user.email.toLowerCase() !== email.toLowerCase() || user.password !== pass ) {
+        showNotification( "Email or password is incorrect.", "error");
+        return;
+      }
+
+      /* Login successful */
+      localStorage.setItem( "classiqLoggedIn", "true" );
+
+      /* Show success notification */
+      showNotification( "Login successful! Redirecting...", "success" );
+
+      /* Redirect to homepage */
+      setTimeout(() => {
+        location.href = "index.html";
+      }, 700);
     });
   }
 
@@ -115,15 +156,148 @@
   /* MOBILE MENU */
   function initMobileMenu() {
 
+    const header = document.querySelector(".header");
     const menu = document.querySelector(".mobilemenu");
-    if (!menu) { return; }
+    const nav = document.querySelector(".desktopnav");
 
-    menu.addEventListener("click", () => {
-      const header = document.querySelector(".header");
-      const open = header.classList.toggle("mobileopen");
+    if (!header || !menu || !nav) {
+        return;
+    }
 
-      menu.setAttribute( "aria-expanded", String(open));
+    // Create close button using JavaScript
+    const close = document.createElement("button");
+
+    close.className = "mobileclose";
+    close.setAttribute("aria-label", "Close navigation");
+    close.innerHTML = "&times;";
+
+    // Add close button at the beginning of nav
+    nav.prepend(close);
+
+    // Open menu
+    menu.addEventListener("click", (event) => {
+        event.stopPropagation();
+        header.classList.add("mobileopen");
+        menu.setAttribute("aria-expanded", "true");
+    });
+
+    // Close menu
+    close.addEventListener("click", (event) => {
+        event.stopPropagation();
+        header.classList.remove("mobileopen");
+        menu.setAttribute("aria-expanded", "false");
+    });
+
+    // Don't close when clicking inside nav
+    nav.addEventListener("click", (event) => {
+        event.stopPropagation();
+    });
+
+    // Close when clicking outside header
+    document.addEventListener("click", () => {
+        header.classList.remove("mobileopen");
+        menu.setAttribute("aria-expanded", "false");
     });
   }
   initMobileMenu();
+
+  /* Nav active */ 
+  function setActiveNav() {
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+    const navLinks = document.querySelectorAll(".desktopnav a");
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href").split("/").pop();
+
+        if (linkPage === currentPage) {
+            link.classList.add("active");
+        }
+    });
+  }
+  setActiveNav();
+
+    /* SUBSCRIPTION */
+  const subscribeForm = document.querySelector("#subscribeForm");
+
+  if (subscribeForm) {
+
+    subscribeForm.addEventListener("submit", e => {
+
+      e.preventDefault();
+
+      const emailInput = document.querySelector("#email");
+      const email = emailInput.value.trim();
+
+      // Remove previous error
+      emailInput.classList.remove("invalid");
+
+      // Validate email
+      if (!validEmail(email)) {
+
+        emailInput.classList.add("invalid");
+
+        showNotification(
+          "Please enter a valid email address.",
+          "error"
+        );
+
+        emailInput.focus();
+
+        return;
+      }
+
+      // Valid email
+      showNotification(
+        "Thank you for subscribing!",
+        "success"
+      );
+
+      // Clear input
+      emailInput.value = "";
+    });
+  }
+
+
+  /* NOTIFICATION */
+  function showNotification(message, type = "success") {
+
+    // Remove existing notification
+    const existing = document.querySelector(".notification");
+
+    if (existing) {
+      existing.remove();
+    }
+
+    // Create notification
+    const notification = document.createElement("div");
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+      <span class="notification-message">${message}</span>
+      <button class="notification-close" aria-label="Close notification">
+        &times;
+      </button>
+    `;
+
+    document.body.appendChild(notification);
+
+    // Close button
+    notification
+      .querySelector(".notification-close")
+      .addEventListener("click", () => {
+        closeNotification(notification);
+      });
+
+    // Automatically close after 4 seconds
+    setTimeout(() => {
+      closeNotification(notification);
+    }, 4000);
+  }
+
+  function closeNotification(notification) {
+    notification.classList.add("notification-hide");
+    setTimeout(() => {
+      notification.remove();
+    }, 300);
+  }
 })();

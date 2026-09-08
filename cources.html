@@ -5,26 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="ClassIQ courses">
   <title>ClassIQ — Courses</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
 <header class="header">
-  <div class="headerinner">
-    <div class="logo"><a href="index.html"><img src="" alt="" width="" height=""></a></div>
-
-    <nav class="desktopnav">
-      <a class="active" href="index.html">Home</a>
-      <a href="courses.html">Courses</a>
-    </nav>
-
-    <div class="headeractions">
-      <a class="btn btnblack btnsmall" href="login.html">Login</a>
-      <a class="btn btnwhite btnsmall" href="signup.html">Sign Up</a>
+  <div class="container">
+    <div class="headerinner">
+      <div class="leftsec">
+        <button class="mobilemenu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  
+        <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo" width="507" height="147"></a></div>
+    
+        <nav class="desktopnav">
+          <a href="index.html">Home</a>
+          <a href="cources.html">Courses</a>
+        </nav>
+      </div>
+  
+      <div class="headeractions">
+        <a class="btn btnblack" href="login.html">Login</a>
+        <a class="btn btnblack" href="signup.html">Sign Up</a>
+      </div>
     </div>
-
-    <button class="mobilemenu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   </div>
 </header>
 
@@ -37,18 +41,18 @@
       <p>Explore courses designed to help youbuild practical, career-ready skills.</p>
     </div>
 
-    <div class="courseimage"><img src="" alt="" width="" height=""></div>
+    <div class="courseimage"><img src="assets/images/cource-banner-img.png" alt="Person" width="602" height="606"></div>
   </div>
 </section>
 
-<section class="courses-area"id="courses">
+<section class="coursesarea" id="courses">
   <div class="container">
-      <h2>All Cources</h2>
+      <h2>All Courses</h2>
       <ul class="course-grid">
         <li class="coursecard" data-search="html css fundamentals frontend">
           <div class="thumb thumb-html">HTML <em>&</em> CSS</div>
+          <p class="tag">Frontend</p>
           <div class="courseinfo">
-            <p class="tag">Frontend</p>
             <h3>HTML & CSS Fundamentals</h3>
             <p>Build responsive websites from scratch.</p>
             <div class="rating">
@@ -60,8 +64,8 @@
     
         <li class="coursecard" data-search="javascript essentials javascript">
           <div class="thumb thumb-js">JS</div>
+          <p class="tag">JavaScript</p>
           <div class="courseinfo">
-            <p class="tag">JavaScript</p>
             <h3>JavaScript Essentials</h3>
             <p>Learn modern JavaScript and DOM basics.</p>
             <div class="rating">
@@ -73,8 +77,8 @@
     
         <li class="coursecard" data-search="responsive web design frontend">
           <div class="thumb thumb-rwd">RWD</div>
+          <p class="tag">Frontend</p>
           <div class="courseinfo">
-            <p class="tag">Frontend</p>
             <h3>Responsive Web Design</h3>
             <p>Create layouts that work on every device.</p>
             <div class="rating">
@@ -86,8 +90,8 @@
     
         <li class="coursecard" data-search="git github tools">
           <div class="thumb thumb-git">GIT</div>
+          <p class="tag">Tools</p>
           <div class="courseinfo">
-            <p class="tag">Tools</p>
             <h3>Git & GitHub</h3>
             <p>Manage code and collaborate confidently.</p>
             <div class="rating">
@@ -99,8 +103,8 @@
     
         <li class="coursecard" data-search="web accessibility best practice">
           <div class="thumb thumb-a11y">A11Y</div>
+          <p class="tag">Best Practice</p>
           <div class="courseinfo">
-            <p class="tag">Best Practice</p>
             <h3>Web Accessibility</h3>
             <p>Build inclusive and accessible experiences.</p>
             <div class="rating">
@@ -112,8 +116,8 @@
     
         <li class="coursecard" data-search="performance optimization performance">
           <div class="thumb thumb-perf">OPT</div>
+          <p class="tag">Performance</p>
           <div class="courseinfo">
-            <p class="tag">Performance</p>
             <h3>Performance Optimization</h3>
             <p>Improve load speed and Core Web Vitals.</p>
             <div class="rating">
@@ -128,7 +132,55 @@
 
 </main>
 
-<script src="js/app.js"></script>
+<footer class="footer">
+  <div class="footerinner">
+    <div class="container">
+      <div class="leftsec">
+        <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo" width="507" height="147"></a></div>
+        <p><strong>Subscribe</strong></p>
+        <p>Subscribe for the latest cources, tips, and updates. Joinour learning community today!</p>
+        <form id="subscribeForm">
+          <div class="formbox">
+            <input type="email" name="email" id="email" placeholder="Enter your email">
+            <button class="btn btngreen" type="submit">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    
+      <div class="business">
+        <h3>ClassIQ Business</h3>
+        <ul>
+          <li><a href="javascript:void(0)">Teach on ClassIQ</a></li>
+          <li><a href="javascript:void(0)">Teaching Tools</a></li>
+          <li><a href="javascript:void(0)">ClassIQ app</a></li>
+          <li><a href="javascript:void(0)">Contact us</a></li>
+        </ul>
+      </div>
+    
+      <div class="careers">
+        <h3>Careers</h3>
+        <ul>
+          <li><a href="javascript:void(0)">Blog</a></li>
+          <li><a href="javascript:void(0)">Affiliate</a></li>
+          <li><a href="javascript:void(0)">Support</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <div class="container">
+      <p>&copy; 2026 ClassIQ. All rights reserved.</p>
+      <ul>
+        <li><a href="javascript:void(0)" class="insta"></a></li>
+        <li><a href="javascript:void(0)" class="twt"></a></li>
+        <li><a href="javascript:void(0)" class="linkedin"></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
 
 </body>
 </html>
