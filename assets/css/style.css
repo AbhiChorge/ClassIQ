@@ -1,0 +1,211 @@
+/* Global Setting */
+:root { --black: #111; --text: #181a19; --muted: #3E3E3E; --green: #C2F578; --green2: #9be329; --bg: #fff; --soft: #f4f6f3; --border: #e4e7e3; --poppins: "Poppins", sans-serif; --inter: "Inter", sans-serif;}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: #181a19; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #fff; line-height: 1.45; }
+a { text-decoration: none; color: inherit; }
+button, input { font: inherit; }
+ul { list-style-type: none; }
+img{ width: 100%; height: 100%;}
+
+/* poppins-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/assets/fonts/poppins/poppins-v24-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/poppins/poppins-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/assets/fonts/poppins/poppins-v24-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/assets/fonts/poppins/poppins-v24-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/poppins/poppins-v24-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* poppins-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  src: url('/assets/fonts/poppins/poppins-v24-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* inter-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/inter/inter-v20-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/assets/fonts/inter/inter-v20-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/inter/inter-v20-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+.container { width: min(1190px, 96%); margin: 0 auto; }
+
+.header { padding: 40px 0 27px; background: var(--bg); }
+.headerinner { margin: auto; display: flex; align-items: center; justify-content: space-between;}
+.header .leftsec{ display: flex; align-items: center; gap: 66px;}
+.logo { width: 147px; height: auto;}
+
+.desktopnav { display: flex; gap: 30px; margin-left: auto; margin-right: 35px; }
+.desktopnav a { font-size: 18px; font-style: 400; font-family: var(--poppins); color: var(--muted);}
+.desktopnav a:hover { color: var(--green2);}
+.desktopnav a.active{ display: none;}
+
+/* Header buttons */
+.headeractions { display: flex; gap: 31px; }
+
+/* Buttons */
+.btn { border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 11px 26px; font-size: 18px; font-weight: 600; font-family: var(--inter); cursor: pointer; transition: .2s; }
+.btnblack { background: #111; color: #fff; }
+.btnblack:hover { background: #2d2d2d; }
+.btnwhite { border-color: #111; background: #fff; }
+.btngreen { background: var(--green); color: #111; }
+.btngreen:hover { background: var(--green2); transform: translateY(-1px); }
+.btnfull { width: 100%; }
+
+/* Mobile menu */
+.mobilemenu { display: none; margin-left: auto; border: 0; background: none; font-size: 21px; }
+
+/* HERO */
+.hero { background: linear-gradient(180deg, #fff 0, #fbfcfa 100%); }
+.herogrid { min-height: 475px; display: grid; grid-template-columns: 1fr .92fr; align-items: center; gap: 30px; }
+.hero h1 { font-size: 48px; line-height: 1.03; letter-spacing: -2.7px; margin: 10px 0 18px; }
+.hero h1 span, .coursesbanner h1 span { font-weight: 850; }
+.herotext { font-size: 13px; color: var(--muted); max-width: 415px; margin: 0 0 23px; }
+
+/* CSS ILLUSTRATION */
+.herovisual { background: #f2f4f1; border-radius: 3px; position: relative; overflow: hidden; }
+
+/* TRUSTED SECTION */
+.trusted { text-align: center; padding: 21px 0 42px; }
+.trusted p { font-size: 9px; color: #a0a3a1; margin: 0; }
+.trusted strong { color: #555; }
+.partnerrow { display: flex; justify-content: center; align-items: center; gap: 45px; margin: 15px 0 22px; color: #a3a7a4; font-weight: 750; font-size: 14px; }
+
+/* FEATURES */
+.cources ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding-bottom: 68px; }
+.cources ul li { background: var(--soft); padding: 23px; border-radius: 7px; min-height: 145px; }
+.featureicon { width: 29px; height: 29px; background: var(--green); border-radius: 7px; display: grid; place-items: center; font-size: 13px; font-weight: 900; }
+.feature h3 { font-size: 13px; margin: 14px 0 5px; }
+.feature p { font-size: 10px; color: var(--muted); margin: 0; max-width: 190px; }
+
+/* SOLUTION SECTION */
+.solution { display: grid; grid-template-columns: 1fr 1fr; gap: 65px; align-items: center; padding-bottom: 78px; }
+.solutionimage { height: 245px; background: #eef1ee; position: relative; overflow: hidden; }
+.solution h2 { font-size: 27px; letter-spacing: -1px; margin: 7px 0 12px; }
+.solution ul { padding-left: 17px; color: #555; font-size: 11px; line-height: 2.1; margin: 0 0 17px; }
+
+/* FOOTER */
+.footer { border-top: 1px solid var(--border); padding: 30px 0 42px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 35px; }
+.footer p, .footer a { display: block; color: #858985; font-size: 10px; margin: 7px 0; }
+.footer h3 { font-size: 10px; margin: 0 0 10px; }
+
+/* AUTH PAGE */
+.auth-page { background: #f7f8f6; min-height: 100vh; }
+.auth-main { min-height: calc(100vh - 72px); display: grid; place-items: center; padding: 35px 16px; }
+.auth-main .authcard { width: min(100%, 365px); background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 30px 31px; box-shadow: 0 14px 40px rgba(20,30,20,.06); }
+.auth-main h1 { font-size: 25px; letter-spacing: -.7px; margin: 5px 0; }
+
+/* Form fields */
+.field { display: block; margin-bottom: 11px; }
+.field span { display: block; font-size: 10px; font-weight: 750; margin-bottom: 5px; }
+.field input { width: 100%; height: 37px; border: 1px solid #d5d9d5; border-radius: 4px; padding: 0 10px; font-size: 10px; outline: 0; }
+.field input:focus { border-color: #8a8f8a; box-shadow: 0 0 0 3px rgba(184,255,62,.18); }
+.field input.invalid { border-color: #d94a4a; }
+.field small, .terms-error { display: block; min-height: 13px; color: #ca3e3e; font-size: 9px; margin-top: 2px; }
+
+/* Form options */
+.formmessage { text-align: center; min-height: 15px; font-size: 9px; margin: 8px 0 0; }
+.success { color: #27782b; }
+.errormessage { color: #ca3e3e; }
+.authswitch { text-align: center; color: #858985; font-size: 9px; margin: 18px 0 0; }
+.authswitch a { color: #111; font-weight: 750; }
+
+/* COURSES PAGE */
+.courses-banner { background: #f3f5f2; }
+.courses-banner-inner { min-height: 275px; display: grid; grid-template-columns: 1fr .75fr; align-items: center; padding: 30px 55px; }
+.courses-banner h1 { font-size: 36px; letter-spacing: -1.7px; margin: 8px 0 12px; line-height: 1.05; }
+.courses-banner p:not(.kicker) { font-size: 11px; color: var(--muted); max-width: 430px; }
+
+/* Course hero illustration */
+.course-illustration { height: 190px; position: relative; }
+.laptop { position: absolute; right: 18px; top: 50px; width: 190px; height: 105px; border: 6px solid #dfe3df; background: #e8ebe8; border-radius: 6px; }
+.laptop:after { content: ""; position: absolute; left: -17px; bottom: -15px; width: 208px; height: 10px; background: #bfc5bf; border-radius: 10px; }
+.student-course { left: 35%; bottom: -10px; transform: scale(.7); transform-origin: bottom center; }
+
+/* Course area */
+.courses-area { padding: 48px 0 75px; }
+.courses-heading { display: flex; justify-content: space-between; align-items: end; margin-bottom: 23px; }
+.courses-heading h2 { font-size: 23px; letter-spacing: -.8px; margin: 5px 0; }
+.count { font-size: 8px; background: #eef0ed; color: #777; padding: 4px 7px; border-radius: 20px; vertical-align: middle; }
+
+/* Search */
+.search { position: relative; width: 225px; }
+.search span { position: absolute; left: 11px; top: 7px; color: #777; font-size: 16px; }
+.search input { height: 36px; width: 100%; border: 1px solid #d9ddd9; border-radius: 5px; padding: 0 10px 0 30px; font-size: 10px; outline: 0; }
+
+/* Course grid */
+.course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.course-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #fff; transition: .2s; }
+.course-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(20,25,20,.07); }
+.course-card[hidden] { display: none; }
+
+/* Course thumbnails */
+.thumb { height: 120px; background: #f0f2ef; display: grid; place-items: center; font-size: 29px; font-weight: 900; letter-spacing: -2px; }
+.thumb em { color: #8dd52c; font-style: normal; }
+.thumb-js { font-size: 42px; }
+.thumb-rwd { font-size: 25px; }
+.thumb-git { font-size: 32px; }
+.thumb-a11y { font-size: 23px; }
+.thumb-perf { font-size: 45px; }
+
+/* Course information */
+.course-info { padding: 14px; }
+.tag { font-size: 8px; color: #5c773b; background: #eff6e9; border-radius: 20px; padding: 4px 7px; }
+.course-info h3 { font-size: 12px; margin: 9px 0 5px; }
+.course-info p { font-size: 9px; color: var(--muted); min-height: 27px; margin: 0 0 12px; }
+.course-info > div:last-child { display: flex; justify-content: space-between; font-size: 8px; color: #777; }
+.empty { text-align: center; color: #777; font-size: 11px; padding: 30px; }

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClassIQ — Login</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="auth-page">
+
+<header class="header">
+  <div class="headerinner">
+    <div class="logo"><a href="index.html"><img src="" alt="" width="" height=""></a></div>
+
+    <nav class="desktopnav">
+      <a class="active" href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+    </nav>
+
+    <div class="headeractions">
+      <a class="btn btnblack btnsmall" href="login.html">Login</a>
+      <a class="btn btnwhite btnsmall" href="signup.html">Sign Up</a>
+    </div>
+
+    <button class="mobilemenu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main class="auth-main">
+  <section class="authcard">
+    <h1>Login</h1>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <input id="loginEmail" type="email" placeholder="Enter Your Email" autocomplete="email">
+        <p data-error="loginEmail"></p>
+      </div>
+
+      <div class="field">
+        <input id="loginPassword" type="password" placeholder="Enter Your Password" autocomplete="current-password">
+        <p data-error="loginPassword"></p>
+      </div>
+
+      <button class="btn btngreen btnfull" type="submit">Login</button>
+
+      <p id="loginMessage" class="formmessage"></p>
+    </form>
+
+    <p class="authswitch">Don't have an account? <a href="signup.html">SignUp</a></p>
+  </section>
+</main>
+
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
